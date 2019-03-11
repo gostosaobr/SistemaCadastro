@@ -436,13 +436,15 @@ public class TelaCadastroDeCliente extends javax.swing.JFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // TODO add your handling code here:
-        
          DefaultTableModel dtm = (DefaultTableModel) txtTabela.getModel();
         if (txtTabela.getSelectedRow() >= 0) {
             dtm.removeRow(txtTabela.getSelectedRow());
             txtTabela.setModel(dtm);
         } else {
             JOptionPane.showMessageDialog(null, "Selecione uma linha");
+
+        }
+        
         
     }//GEN-LAST:event_btnExcluirActionPerformed
 
