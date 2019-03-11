@@ -7,6 +7,7 @@ package view;
 
 import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -323,6 +324,11 @@ public class TelaCadastroDeCliente extends javax.swing.JFrame {
 
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-excluir-18.png"))); // NOI18N
         btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-editar-arquivo-18.png"))); // NOI18N
         btnEditar.setText("Editar");
@@ -427,6 +433,18 @@ public class TelaCadastroDeCliente extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        // TODO add your handling code here:
+        
+         DefaultTableModel dtm = (DefaultTableModel) txtTabela.getModel();
+        if (txtTabela.getSelectedRow() >= 0) {
+            dtm.removeRow(txtTabela.getSelectedRow());
+            txtTabela.setModel(dtm);
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione uma linha");
+        
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
      * @param args the command line arguments

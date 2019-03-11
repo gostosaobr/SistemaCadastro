@@ -34,6 +34,14 @@ public class TelaCadastroDeProdutos extends javax.swing.JFrame {
 
     }
 
+    public void LimpaTela() {
+
+        txtCod.setText("");
+        txtNome.setText("");
+        txtPreco.setText("");
+        txtIngredientes.setText("");
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -324,10 +332,7 @@ public class TelaCadastroDeProdutos extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         ManipulaTabela();
-        txtCod.setText("");
-        txtNome.setText("");
-        txtPreco.setText("");
-        txtIngredientes.setText("");
+        LimpaTela();
 
     }//GEN-LAST:event_btnSalvarActionPerformed
 
