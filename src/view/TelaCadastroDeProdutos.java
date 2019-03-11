@@ -6,6 +6,7 @@
 package view;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -23,7 +24,7 @@ public class TelaCadastroDeProdutos extends javax.swing.JFrame {
       
         setLocationRelativeTo(null);
       
-        btnCadastrar.setEnabled(true);
+        btnSalvar.setEnabled(true);
     }
     
     public void ManipulaTabela(){
@@ -48,7 +49,7 @@ public class TelaCadastroDeProdutos extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtPreco = new javax.swing.JTextField();
-        btnCadastrar = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
         btnNovo = new javax.swing.JButton();
         txtCod = new javax.swing.JTextField();
         txtNome = new javax.swing.JTextField();
@@ -84,11 +85,11 @@ public class TelaCadastroDeProdutos extends javax.swing.JFrame {
             }
         });
 
-        btnCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-salvar-filled-18.png"))); // NOI18N
-        btnCadastrar.setText("Salvar");
-        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-salvar-filled-18.png"))); // NOI18N
+        btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastrarActionPerformed(evt);
+                btnSalvarActionPerformed(evt);
             }
         });
 
@@ -139,7 +140,7 @@ public class TelaCadastroDeProdutos extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(60, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -160,7 +161,7 @@ public class TelaCadastroDeProdutos extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovo)
-                    .addComponent(btnCadastrar)))
+                    .addComponent(btnSalvar)))
         );
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingredientes"));
@@ -320,17 +321,17 @@ public class TelaCadastroDeProdutos extends javax.swing.JFrame {
         // TODO add your handling code here:
       
         
-        txtCod.setText("");
-        txtNome.setText("");
-        txtPreco.setText("");
-        txtIngredientes.setText("");
+       
     }//GEN-LAST:event_btnNovoActionPerformed
 
-    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
       ManipulaTabela();
-        
+      txtCod.setText("");
+        txtNome.setText("");
+        txtPreco.setText("");
+        txtIngredientes.setText(""); 
      
-    }//GEN-LAST:event_btnCadastrarActionPerformed
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void txtCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodActionPerformed
         // TODO add your handling code here:
@@ -338,7 +339,14 @@ public class TelaCadastroDeProdutos extends javax.swing.JFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // TODO add your handling code here:
-        
+       DefaultTableModel dtm = (DefaultTableModel)txtTabela.getModel();
+        if (txtTabela.getSelectedRow() >= 0){
+            dtm.removeRow(txtTabela.getSelectedRow());
+            txtTabela.setModel(dtm);
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecione uma linha");
+            
+        }
        
     }//GEN-LAST:event_btnExcluirActionPerformed
 
@@ -399,11 +407,11 @@ public class TelaCadastroDeProdutos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnSair;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
