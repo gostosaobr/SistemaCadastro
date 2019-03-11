@@ -15,26 +15,25 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TelaCadastroDeProdutos extends javax.swing.JFrame {
 
-     ArrayList<String> produto = new ArrayList();
-     String modo;
+    ArrayList<String> produto = new ArrayList();
+    String modo;
 
-    
     public TelaCadastroDeProdutos() {
         initComponents();
-      
+
         setLocationRelativeTo(null);
-      
+
         btnSalvar.setEnabled(true);
     }
-    
-    public void ManipulaTabela(){
-        
+
+    public void ManipulaTabela() {
+
         DefaultTableModel modelo = (DefaultTableModel) this.txtTabela.getModel();
-    
-    modelo.addRow(new Object[]{this.txtCod.getText(),this.txtNome.getText(), this.txtPreco.getText()});
-    
+
+        modelo.addRow(new Object[]{this.txtCod.getText(), this.txtNome.getText(), this.txtPreco.getText()});
+
     }
-   
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -319,18 +318,17 @@ public class TelaCadastroDeProdutos extends javax.swing.JFrame {
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         // TODO add your handling code here:
-      
-        
-       
+
+
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-      ManipulaTabela();
-      txtCod.setText("");
+        ManipulaTabela();
+        txtCod.setText("");
         txtNome.setText("");
         txtPreco.setText("");
-        txtIngredientes.setText(""); 
-     
+        txtIngredientes.setText("");
+
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void txtCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodActionPerformed
@@ -339,15 +337,15 @@ public class TelaCadastroDeProdutos extends javax.swing.JFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // TODO add your handling code here:
-       DefaultTableModel dtm = (DefaultTableModel)txtTabela.getModel();
-        if (txtTabela.getSelectedRow() >= 0){
+        DefaultTableModel dtm = (DefaultTableModel) txtTabela.getModel();
+        if (txtTabela.getSelectedRow() >= 0) {
             dtm.removeRow(txtTabela.getSelectedRow());
             txtTabela.setModel(dtm);
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Selecione uma linha");
-            
+
         }
-       
+
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
@@ -361,13 +359,13 @@ public class TelaCadastroDeProdutos extends javax.swing.JFrame {
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-       
+
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
-        
-       
+
+
     }//GEN-LAST:event_btnEditarActionPerformed
 
     /**

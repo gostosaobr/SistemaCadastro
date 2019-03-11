@@ -17,26 +17,24 @@ public class TelaCadastroDeCliente extends javax.swing.JFrame {
 
     ArrayList<String> cliente = new ArrayList();
     String modo;
-    
+
     public TelaCadastroDeCliente() {
         initComponents();
-        
+
         setLocationRelativeTo(null);
-        
-        
+
     }
 
-    public void ManipulaTabela(){
-        
+    public void ManipulaTabela() {
+
         DefaultTableModel modelo = (DefaultTableModel) this.txtTabela.getModel();
         modelo.addRow(new Object[]{this.txtNome.getText(), this.txtTelefone.getText(), this.txtRua.getText(), this.txtBairro.getText()});
-        
-        
+
     }
-    
-    public void LimpaTela(){
-        
-     txtNome.setText("");
+
+    public void LimpaTela() {
+
+        txtNome.setText("");
         txtNascimento.setText("");
         txtSexo.setToolTipText("");
         txtCep.setText("");
@@ -46,9 +44,8 @@ public class TelaCadastroDeCliente extends javax.swing.JFrame {
         txtNumero.setText("");
         txtTelefone.setText("");
         txtCelular.setText("");
-       }
-    
-    
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -398,7 +395,7 @@ public class TelaCadastroDeCliente extends javax.swing.JFrame {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-      
+
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void txtNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNascimentoActionPerformed
@@ -409,27 +406,26 @@ public class TelaCadastroDeCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
         ManipulaTabela();
         LimpaTela();
-        
+
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         // TODO add your handling code here:
         LimpaTela();
-      
-        
+
+
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
         // TODO add your handling code here:
-        
+
         LimpaTela();
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
-        
-        
-        
+
+
     }//GEN-LAST:event_btnEditarActionPerformed
 
     /**
