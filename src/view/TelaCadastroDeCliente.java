@@ -150,9 +150,7 @@ public class TelaCadastroDeCliente extends javax.swing.JFrame {
 
             default:
                 System.out.println("Modo inválido");
-
         }
-
     }
 
     /**
@@ -532,7 +530,6 @@ public class TelaCadastroDeCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCepActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        // TODO add your handling code here:
         setVisible(false);
 
     }//GEN-LAST:event_btnSairActionPerformed
@@ -570,17 +567,13 @@ public class TelaCadastroDeCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        // TODO add your handling code here:
         DefaultTableModel dtm = (DefaultTableModel) txtTabela.getModel();
         if (txtTabela.getSelectedRow() >= 0) {
             dtm.removeRow(txtTabela.getSelectedRow());
             txtTabela.setModel(dtm);
         } else {
             JOptionPane.showMessageDialog(null, "Selecione uma linha");
-
         }
-
-
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void txtTabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTabelaMouseClicked
@@ -589,17 +582,13 @@ public class TelaCadastroDeCliente extends javax.swing.JFrame {
         txtNome.setText(modelo.getValueAt(txtTabela.getSelectedRow(), 0).toString());
         txtTelefone.setText(modelo.getValueAt(txtTabela.getSelectedRow(), 1).toString());
         txtRua.setText(modelo.getValueAt(txtTabela.getSelectedRow(), 2).toString());
-        txtBairro.setText(modelo.getValueAt(txtTabela.getSelectedRow(),3).toString());
+        txtBairro.setText(modelo.getValueAt(txtTabela.getSelectedRow(), 3).toString());
 
         modo = "Selecao";
         ManipulaInterface();
-
-
     }//GEN-LAST:event_txtTabelaMouseClicked
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
-
         modo = "Navegar";
         ManipulaInterface();
     }//GEN-LAST:event_btnCancelarActionPerformed
