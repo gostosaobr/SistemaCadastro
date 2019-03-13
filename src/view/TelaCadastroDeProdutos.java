@@ -237,7 +237,7 @@ public class TelaCadastroDeProdutos extends javax.swing.JFrame {
             }
         });
 
-        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-excluir-18.png"))); // NOI18N
+        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-lixo-18.png"))); // NOI18N
         btnExcluir.setText("Excluir");
         btnExcluir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -313,7 +313,7 @@ public class TelaCadastroDeProdutos extends javax.swing.JFrame {
                         .addGap(52, 52, 52))))
         );
 
-        pack();
+        setBounds(0, 0, 1031, 517);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecoActionPerformed

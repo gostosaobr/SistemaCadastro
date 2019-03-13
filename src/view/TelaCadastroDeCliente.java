@@ -21,7 +21,8 @@ public class TelaCadastroDeCliente extends javax.swing.JFrame {
 
     public TelaCadastroDeCliente() {
         initComponents();
-
+        modo = "Navegar";
+        ManipulaInterface();
         setLocationRelativeTo(null);
 
     }
@@ -47,6 +48,113 @@ public class TelaCadastroDeCliente extends javax.swing.JFrame {
         txtCelular.setText("");
     }
 
+    public void ManipulaInterface() {
+
+        switch (modo) {
+            case "Navegar":
+
+                txtNome.setEnabled(false);
+                txtNascimento.setEnabled(false);
+                txtSexo.setEnabled(false);
+                txtCep.setEnabled(false);
+                txtRua.setEnabled(false);
+                txtBairro.setEnabled(false);
+                txtComplemento.setEnabled(false);
+                txtNumero.setEnabled(false);
+                txtTelefone.setEnabled(false);
+                txtCelular.setEnabled(false);
+                btnNovo.setEnabled(true);
+                btnSalvar.setEnabled(false);
+                btnEditar.setEnabled(false);
+                btnExcluir.setEnabled(false);
+                btnLimpar.setEnabled(false);
+                btnCancelar.setEnabled(false);
+                break;
+
+            case "Novo":
+
+                txtNome.setEnabled(true);
+                txtNascimento.setEnabled(true);
+                txtSexo.setEnabled(true);
+                txtCep.setEnabled(true);
+                txtRua.setEnabled(true);
+                txtBairro.setEnabled(true);
+                txtComplemento.setEnabled(true);
+                txtNumero.setEnabled(true);
+                txtTelefone.setEnabled(true);
+                txtCelular.setEnabled(true);
+                btnNovo.setEnabled(false);
+                btnSalvar.setEnabled(true);
+                btnEditar.setEnabled(false);
+                btnExcluir.setEnabled(false);
+                btnLimpar.setEnabled(true);
+                btnCancelar.setEnabled(true);
+                break;
+
+            case "Editar":
+
+                txtNome.setEnabled(true);
+                txtNascimento.setEnabled(true);
+                txtSexo.setEnabled(true);
+                txtCep.setEnabled(true);
+                txtRua.setEnabled(true);
+                txtBairro.setEnabled(true);
+                txtComplemento.setEnabled(true);
+                txtNumero.setEnabled(true);
+                txtTelefone.setEnabled(true);
+                txtCelular.setEnabled(true);
+                btnNovo.setEnabled(false);
+                btnSalvar.setEnabled(true);
+                btnEditar.setEnabled(false);
+                btnExcluir.setEnabled(false);
+                btnCancelar.setEnabled(true);
+                break;
+
+            case "Excluir":
+
+                txtNome.setEnabled(false);
+                txtNascimento.setEnabled(false);
+                txtSexo.setEnabled(false);
+                txtCep.setEnabled(false);
+                txtRua.setEnabled(false);
+                txtBairro.setEnabled(false);
+                txtComplemento.setEnabled(false);
+                txtNumero.setEnabled(false);
+                txtTelefone.setEnabled(false);
+                txtCelular.setEnabled(false);
+                btnNovo.setEnabled(true);
+                btnSalvar.setEnabled(false);
+                btnEditar.setEnabled(false);
+                btnExcluir.setEnabled(false);
+                btnCancelar.setEnabled(false);
+                break;
+
+            case "Selecao":
+
+                txtNome.setEnabled(false);
+                txtNascimento.setEnabled(false);
+                txtSexo.setEnabled(false);
+                txtCep.setEnabled(false);
+                txtRua.setEnabled(false);
+                txtBairro.setEnabled(false);
+                txtComplemento.setEnabled(false);
+                txtNumero.setEnabled(false);
+                txtTelefone.setEnabled(false);
+                txtCelular.setEnabled(false);
+                btnNovo.setEnabled(false);
+                btnSalvar.setEnabled(false);
+                btnEditar.setEnabled(true);
+                btnExcluir.setEnabled(true);
+                btnCancelar.setEnabled(true);
+                break;
+
+            default:
+                System.out.println("Modo inválido");
+
+        }
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -67,7 +175,7 @@ public class TelaCadastroDeCliente extends javax.swing.JFrame {
         btnNovo = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         btnLimpar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
+        btnSair = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtTabela = new javax.swing.JTable();
@@ -87,6 +195,8 @@ public class TelaCadastroDeCliente extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         txtNumero = new javax.swing.JTextField();
         btnExcluir = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        lblMensagemErro = new javax.swing.JLabel();
         btnEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -177,11 +287,11 @@ public class TelaCadastroDeCliente extends javax.swing.JFrame {
             }
         });
 
-        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-sair-18.png"))); // NOI18N
-        btnCancelar.setText("Sair");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-sair-18.png"))); // NOI18N
+        btnSair.setText("Sair");
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
+                btnSairActionPerformed(evt);
             }
         });
 
@@ -195,6 +305,11 @@ public class TelaCadastroDeCliente extends javax.swing.JFrame {
                 "Nome", "Telefone", "Rua", "Bairro"
             }
         ));
+        txtTabela.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtTabelaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(txtTabela);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -203,7 +318,7 @@ public class TelaCadastroDeCliente extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -322,13 +437,23 @@ public class TelaCadastroDeCliente extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-excluir-18.png"))); // NOI18N
+        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-lixo-18.png"))); // NOI18N
         btnExcluir.setText("Excluir");
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirActionPerformed(evt);
             }
         });
+
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-excluir-18.png"))); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
+        lblMensagemErro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-editar-arquivo-18.png"))); // NOI18N
         btnEditar.setText("Editar");
@@ -354,7 +479,7 @@ public class TelaCadastroDeCliente extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -363,15 +488,19 @@ public class TelaCadastroDeCliente extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(185, 185, 185))))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblMensagemErro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(131, 131, 131))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(25, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -380,63 +509,69 @@ public class TelaCadastroDeCliente extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblMensagemErro)
+                .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovo)
                     .addComponent(btnSalvar)
                     .addComponent(btnLimpar)
-                    .addComponent(btnCancelar)
+                    .addComponent(btnSair)
                     .addComponent(btnExcluir)
+                    .addComponent(btnCancelar)
                     .addComponent(btnEditar))
                 .addGap(3, 3, 3))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(1056, 512));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtCepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCepActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCepActionPerformed
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         // TODO add your handling code here:
         setVisible(false);
 
-    }//GEN-LAST:event_btnCancelarActionPerformed
+    }//GEN-LAST:event_btnSairActionPerformed
 
     private void txtNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNascimentoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNascimentoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // TODO add your handling code here:
-        ManipulaTabela();
-        LimpaTela();
+        if (modo.equals("Novo")) {
+            ManipulaTabela();
 
+        } else if (modo.equals("Editar")) {
+            DefaultTableModel modelo = (DefaultTableModel) this.txtTabela.getModel();
+
+            modelo.setValueAt(txtNome.getText(), txtTabela.getSelectedRow(), 0);
+            modelo.setValueAt(txtTelefone.getText(), txtTabela.getSelectedRow(), 1);
+            modelo.setValueAt(txtRua.getText(), txtTabela.getSelectedRow(), 2);
+            modelo.setValueAt(txtBairro.getText(), txtTabela.getSelectedRow(), 3);
+
+        }
+        modo = "Navegar";
+        ManipulaInterface();
+        LimpaTela();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-        // TODO add your handling code here:
+        modo = "Novo";
+        ManipulaInterface();
         LimpaTela();
-
-
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
-        // TODO add your handling code here:
-
         LimpaTela();
     }//GEN-LAST:event_btnLimparActionPerformed
 
-    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // TODO add your handling code here:
-
-
-    }//GEN-LAST:event_btnEditarActionPerformed
-
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // TODO add your handling code here:
-         DefaultTableModel dtm = (DefaultTableModel) txtTabela.getModel();
+        DefaultTableModel dtm = (DefaultTableModel) txtTabela.getModel();
         if (txtTabela.getSelectedRow() >= 0) {
             dtm.removeRow(txtTabela.getSelectedRow());
             txtTabela.setModel(dtm);
@@ -444,9 +579,36 @@ public class TelaCadastroDeCliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Selecione uma linha");
 
         }
-        
-        
+
+
     }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void txtTabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTabelaMouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel modelo = (DefaultTableModel) txtTabela.getModel();
+        txtNome.setText(modelo.getValueAt(txtTabela.getSelectedRow(), 0).toString());
+        txtTelefone.setText(modelo.getValueAt(txtTabela.getSelectedRow(), 1).toString());
+        txtRua.setText(modelo.getValueAt(txtTabela.getSelectedRow(), 2).toString());
+        txtBairro.setText(modelo.getValueAt(txtTabela.getSelectedRow(),3).toString());
+
+        modo = "Selecao";
+        ManipulaInterface();
+
+
+    }//GEN-LAST:event_txtTabelaMouseClicked
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+
+        modo = "Navegar";
+        ManipulaInterface();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        modo = "Editar";
+        ManipulaInterface();
+
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -490,6 +652,7 @@ public class TelaCadastroDeCliente extends javax.swing.JFrame {
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnNovo;
+    private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -506,6 +669,7 @@ public class TelaCadastroDeCliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblMensagemErro;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JFormattedTextField txtCelular;
     private javax.swing.JFormattedTextField txtCep;
