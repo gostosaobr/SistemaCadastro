@@ -6,8 +6,8 @@ package cadastrocliente;
  */
 public class Cliente {
     
-    String nome, nascimento, sexo, cep, rua, bairro, numero, complemento, 
-            telefone, celular;
+    String nome, nascimento, sexo, senha, cep, logradouro, bairro, numero, complemento, 
+            telefone;
 
     public Cliente() {
     }
@@ -36,20 +36,28 @@ public class Cliente {
         this.sexo = sexo;
     }
 
-    public String getCep() {
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public String getcep() {
         return cep;
     }
 
-    public void setCep(String cep) {
+    public void setcep(String cep) {
         this.cep = cep;
     }
 
-    public String getRua() {
-        return rua;
+    public String getLogradouro() {
+        return logradouro;
     }
 
-    public void setRua(String rua) {
-        this.rua = rua;
+    public void setLogradouro(String rua) {
+        this.logradouro = rua;
     }
 
     public String getBairro() {
@@ -84,15 +92,7 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    public String getCelular() {
-        return celular;
-    }
-
-    public void setCelular(String celular) {
-        this.celular = celular;
-    }
-    
-    
-    
+  
+     
     
 }

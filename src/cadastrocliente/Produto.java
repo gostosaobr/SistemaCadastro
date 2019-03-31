@@ -4,13 +4,13 @@ package cadastrocliente;
  *
  * @author sala302b
  */
-public class Produtos {
+public class Produto {
     
     int cod;
-    String nome, produto;
+    String nome, ingredientes;
     double preco;
 
-    public Produtos() {
+    public Produto() {
     }
 
 
@@ -38,13 +38,16 @@ public class Produtos {
         this.preco = preco;
     }
 
-    public String getProduto() {
-        return produto;
+    public String getIngredientes() {
+        return ingredientes;
     }
 
-    public void setProduto(String produto) {
-        this.produto = produto;
+    public void setIngredientes(String ingredientes) {
+        this.ingredientes = ingredientes;
     }
+
+    
+    
 
     
 }
